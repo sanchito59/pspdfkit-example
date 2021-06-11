@@ -19,15 +19,17 @@ export class AppComponent {
       container: ".pspdfkit-container",
       autoSaveMode: PSPDFKit.AutoSaveMode.DISABLED,
       licenseKey,
+      // toolbarItems: PSPDFKit.defaultToolbarItems.reverse(),
     }).then((instance) => {
+
       instance.addEventListener("annotations.create", (createdAnnotations) => {
         console.log("Annotation created.");
-        console.log("What happened: ", createdAnnotations);
+        console.log("Creation: ", createdAnnotations);
       });
 
       instance.addEventListener("annotations.update", updatedAnnotations => {
         console.log("Annotation updated");
-        console.log(updatedAnnotations);
+        console.log("Update: ", updatedAnnotations);
       });
       // For the sake of this demo, store the PSPDFKit for Web instance
       // on the global object so that you can open the dev tools and
